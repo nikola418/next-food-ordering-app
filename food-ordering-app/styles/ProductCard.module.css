@@ -1,0 +1,25 @@
+.container {
+    width: 22%;
+    padding: 20px 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border-radius: 20px;
+}
+
+.container:hover {
+    background-color: #16D977;
+}
+
+.title {
+    font-size: 18px;
+    font-weight: bold;
+    color: #004020;
+}
+
+.desc {
+    text-align: center;
+    color: #008C46;
+}
