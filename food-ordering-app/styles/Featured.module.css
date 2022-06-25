@@ -2,6 +2,7 @@
     height: calc(100vh - 60px);
     background-color: #CD212A;
     position: relative;
+    overflow: hidden;
 }
 
 .wrapper {
@@ -28,3 +29,10 @@
     width: 100vw;
     height: 75%;
 }
+
+@media screen and (max-width:400px) {
+    .container {
+        height: 50vh;
+    }
+}
+
