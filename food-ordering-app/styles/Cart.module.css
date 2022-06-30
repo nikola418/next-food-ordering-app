@@ -121,3 +121,26 @@
         width: 100%;
     }
 }
+
+.paymentMethods {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.button:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+}
+
+.payButton {
+    padding: 5px;
+    cursor: pointer;
+    margin-bottom: 5px;
+    background-color: white;
+    color: teal;
+    font-weight: 500;
+    border: none;
+    border-radius: 5px;
+    height: 35px;
+}
