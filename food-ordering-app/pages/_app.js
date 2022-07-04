@@ -3,8 +3,14 @@ import Layout from "../components/Layout"
 import Head from 'next/head';
 import { Provider } from "react-redux"
 import store from "../redux/store"
+import { useRef } from 'react';
 
 function MyApp({ Component, pageProps }) {
+  const productsListReference = useRef(null)
+  const handleScrollToReference = () => {
+    productsListReference.current.scrollToView()
+  }
+
   return (
     <>
     <Provider store={store}>
@@ -13,12 +19,13 @@ function MyApp({ Component, pageProps }) {
         <meta name="description" content="Food ordering application" />
         <link rel="icon" href="/favico.ico" />
       </Head>
-      <Layout>
+      <Layout executeScroll={handleScrollToReference}>
         <Component {...pageProps} />
       </Layout>
     </Provider>
     </>
   );
 }
+
 
 export default MyApp

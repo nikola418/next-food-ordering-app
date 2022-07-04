@@ -3,10 +3,10 @@ import Footer from "./Footer"
 import Navbar from "./Navbar"
 
 
-const Layout = ({ children }) => {
+const Layout = ({ children, executeScroll }) => {
     return ( 
         <>
-            <Navbar/>
+            <Navbar executeScroll={executeScroll}/>
             {children}
             <Footer/>
 

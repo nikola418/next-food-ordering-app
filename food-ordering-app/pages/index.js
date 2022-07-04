@@ -12,9 +12,9 @@ export default function Home({ productList, admin }) {
   return (
     <div className={styles.container}>
       <Featured/>
-      {admin && <AddButton setClose={setClose}/>}
-      <ProductList productList={productList}/>
-      {!close && <Add/>}
+      {admin && <AddButton setClose={setClose} />}
+      <ProductList  productList={productList}/>
+      {!close && <Add setClose={setClose}/>}
     </div>
   )
 }

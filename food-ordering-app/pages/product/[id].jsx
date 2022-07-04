@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import styles from "../../styles/Product.module.css"
 import axios from "axios"
@@ -12,23 +12,29 @@ const Product = ({product}) => {
     const [quantity, setQuantity] = useState(1);
     const dispatch = useDispatch();
 
-    const changePrice = (amount) => {
-        setPrice(price+amount)
+    const changePrice = () => {
+        let amount = product.prices[size] + options.reduce((total, option) => {
+            return total + option.price 
+            console.log(total)
+        }, 0)
+        amount = parseFloat(amount).toPrecision(3)
+        setPrice(amount)
     }
+
+    useEffect(() => {
+        changePrice()
+    }, [size, options])
     
     const handleSize = (newSize) => {
-        const dif = product.prices[newSize] - product.prices[size]
         setSize(newSize)
-        changePrice(dif)
     }
+
     const handleOption = (e, option) => {
         const checked = e.target.checked;
 
         if(checked){
-            changePrice(option.price)
             setOptions((prev) => [...prev, option])
         } else if(!checked){
-            changePrice(-option.price)
             setOptions(options.filter((op) => op._id !== option._id))
         }
     }

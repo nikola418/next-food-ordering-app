@@ -3,7 +3,7 @@ import styles from "../styles/Navbar.module.css"
 import Link from "next/link"
 import { useSelector } from "react-redux"
 
-const Navbar = () => {
+const Navbar = ({ executeScroll }) => {
     const quantity = useSelector((state) => state.cart.quantity)
 
     return ( 
@@ -22,7 +22,7 @@ const Navbar = () => {
                     <Link href="/">
                         <li className={styles.listItem}>Homepage</li>
                     </Link>
-                    <li className={styles.listItem}>Products</li>
+                    <li className={styles.listItem} onClick={executeScroll}>Products</li>
                     <li className={styles.listItem}>Menu</li>
                     <Link href="/" passHref={false}>
                         <a>

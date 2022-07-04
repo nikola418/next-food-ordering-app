@@ -38,7 +38,7 @@ const Cart = () => {
     const ButtonWrapper = ({ currency, showSpinner }) => {
         // usePayPalScriptReducer can be use only inside children of PayPalScriptProviders
         // This is the main reason to wrap the PayPalButtons in a new component
-        const [{ options, isPending }, dispatch] = usePayPalScriptReducer();
+        const [{ options, isPending, isRejected }, dispatch] = usePayPalScriptReducer();
     
         useEffect(() => {
             dispatch({
@@ -57,7 +57,7 @@ const Cart = () => {
                     style={style}
                     disabled={false}
                     forceReRender={[amount, currency, style]}
-                    fundingSource={undefined}
+                    fundingSource="paypal"
                     createOrder={(data, actions) => {
                         return actions.order
                             .create({
@@ -86,6 +86,9 @@ const Cart = () => {
                                 paymentMethod: 1
                             })
                         });
+                    }}
+                    onError ={ function(err){
+                        console.log(err)
                     }}
                 />
             </>
@@ -171,7 +174,8 @@ const Cart = () => {
                                 "client-id": "AY3VgtjyfWvhPpPpV7WIrixvTcECsA0h7BN07mWYZNRMa6FbWDjfiAZzhrZrkQaHv6fKaCktC2FGDIcB",
                                 components: "buttons",
                                 currency: currency,
-                                "disable-funding": "credit,card,p24"
+                                "disable-funding": "credit,card,p24",
+                                debug: true
                             }}
                         >
                             <ButtonWrapper
