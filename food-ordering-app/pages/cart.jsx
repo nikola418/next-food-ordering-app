@@ -34,7 +34,9 @@ const Cart = () => {
             console.log(error)
         }
     }
-
+    const discard = () => {
+        setOpen(false)
+    }
     const ButtonWrapper = ({ currency, showSpinner }) => {
         // usePayPalScriptReducer can be use only inside children of PayPalScriptProviders
         // This is the main reason to wrap the PayPalButtons in a new component
@@ -193,7 +195,8 @@ const Cart = () => {
                cash && (
                 <OrderDetails 
                 total={cart.total}
-                createOrder={createOrder}></OrderDetails>
+                createOrder={createOrder}
+                discard={setCash}></OrderDetails>
                ) 
             }
         </div>

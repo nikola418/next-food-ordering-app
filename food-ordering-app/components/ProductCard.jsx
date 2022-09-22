@@ -6,7 +6,13 @@ const ProductCard = ({ product }) => {
     return ( 
         <Link href={`/product/${product._id}`} passHref>
             <div className={styles.container}>
-                    <Image src={product.img} alt="" width="500px" height="500px" />
+                    <Image 
+                        src={product.img} 
+                        alt="" width="500px" 
+                        loading="lazy" 
+                        style={{borderRadius: "50%"}} 
+                        height="500px" 
+                    />
                 <h1 className={styles.title}>{product.title}</h1>
                 <span className={styles.price}>{product.prices[0]}</span>
                 <p className={styles.desc}>

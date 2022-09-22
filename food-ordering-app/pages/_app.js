@@ -6,10 +6,10 @@ import store from "../redux/store"
 import { useRef } from 'react';
 
 function MyApp({ Component, pageProps }) {
-  const productsListReference = useRef(null)
-  const handleScrollToReference = () => {
-    productsListReference.current.scrollToView()
-  }
+  // const productsListReference = useRef(null)
+  // const handleScrollToReference = () => {
+  //   productsListReference.current.scrollToView()
+  // }
 
   return (
     <>
@@ -19,7 +19,7 @@ function MyApp({ Component, pageProps }) {
         <meta name="description" content="Food ordering application" />
         <link rel="icon" href="/favico.ico" />
       </Head>
-      <Layout executeScroll={handleScrollToReference}>
+      <Layout>
         <Component {...pageProps} />
       </Layout>
     </Provider>

@@ -1,17 +1,18 @@
 import { useState } from "react";
 import styles from "../styles/OrderDetails.module.css"
 
-const OrderDetails = ({ total, createOrder }) => {
+const OrderDetails = ({ total, createOrder, discard }) => {
     const [customer, setCustomer] = useState("")
     const [address, setAddress] = useState("")
 
     const handleClick = () => {
         createOrder({customer, address, total, paymentMethod: 0})
     }
-
+    
     return ( 
-        <div className={styles.container}>
+        <div className={styles.container} >
             <div className={styles.wrapper}>
+            <span onClick={()=> discard(false)} className={styles.close}>X</span>
                 <h1 className={styles.wrapper}>
                     You will pay $12 after delivery.
                 </h1>
@@ -31,7 +32,7 @@ const OrderDetails = ({ total, createOrder }) => {
                 <label className={styles.label}>Address</label>
                 <textarea
                     rows={5}
-                    placeholder="Elton St. 505 NY"
+                    placeholder="Aresa"
                     type="text"
                     className={styles.textarea}
                     onChange={(e) => setAddress(e.target.value)}
