@@ -36,17 +36,23 @@ const Navbar = () => {
                     <li className={styles.listItem}>Contact</li>
                 </ul>
             </div>
-                <div className={styles.item} >
-                    <Link href="/cart" passHref >
-                        <a>
-                            <div className={styles.cart}>
-                                <Image src="/img/basket-white.png" alt="" width="30px" height="30px" />
-                                <div className={styles.counter}>{quantity}</div>
-                             
-                            </div>
-                        </a>
-                    </Link>
-                </div>
+            <div className={styles.item} >
+                <Link href="/cart" passHref >
+                    <a className={styles.cart}>
+                        <div>
+                            <Image src="/img/basket-white.png" alt="" width="20px" height="20px" />
+                            <div className={styles.counter}>{quantity}</div>
+                        </div>
+                    </a>
+                </Link>
+                <Link href="/admin" passHref>
+                    <a className={styles.profile}>
+                        <div>
+                            <Image src="/img/profile.png" alt="" width="25px" height="25px" />
+                        </div>
+                    </a>
+                </Link>
+            </div>
         </div>
      );
 }

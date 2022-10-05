@@ -179,6 +179,7 @@ const Cart = () => {
                                 "disable-funding": "credit,card,p24",
                                 debug: true
                             }}
+
                         >
                             <ButtonWrapper
                                 currency={currency}
@@ -194,9 +195,10 @@ const Cart = () => {
             {
                cash && (
                 <OrderDetails 
-                total={cart.total}
-                createOrder={createOrder}
-                discard={setCash}></OrderDetails>
+                    total={cart.total}
+                    createOrder={createOrder}
+                    discard={setCash}
+                ></OrderDetails>
                ) 
             }
         </div>

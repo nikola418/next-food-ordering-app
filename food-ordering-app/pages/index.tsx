@@ -1,4 +1,4 @@
-import Head from 'next/head'
+import { GetServerSideProps } from 'next'
 import styles from '../styles/Home.module.css'
 import Featured from "../components/Featured"
 import ProductList from "../components/ProductList"
@@ -6,8 +6,10 @@ import axios from 'axios'
 import { useState } from 'react'
 import Add from '../components/Add'
 import AddButton from "../components/AddButton"
+import { NextApiRequestCookies } from 'next/dist/server/api-utils'
+import InitialProps from '../interfaces/initialProps'
 
-export default function Home({ productList, admin }) {
+export default function Home( { productList, admin }: InitialProps ) {
   const [close, setClose] = useState(true)
   return (
     <div className={styles.container}>
@@ -19,9 +21,9 @@ export default function Home({ productList, admin }) {
   )
 }
 
-export const getServerSideProps = async (ctx) => {
-  const myCookie = ctx.req?.cookies || ""
-  let admin = false;
+export const getServerSideProps: GetServerSideProps = async (ctx) => {
+  const myCookie:NextApiRequestCookies = ctx.req?.cookies
+  let admin: boolean = false;
 
   if(myCookie.token === process.env.TOKEN){
     admin = true
@@ -32,7 +34,7 @@ export const getServerSideProps = async (ctx) => {
   return {
     props: {
       productList: res.data,
-      admin
+      admin,
     }
   }
 }

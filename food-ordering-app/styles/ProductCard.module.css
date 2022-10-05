@@ -10,7 +10,7 @@
 }
 
 .container:hover {
-    background-color: #16D977;
+    background-image: linear-gradient(to right, #008C46, #008C46 33%, white 33%, white 66%, #CD212A 66%, #CD212A);
 }
 
 .title {
